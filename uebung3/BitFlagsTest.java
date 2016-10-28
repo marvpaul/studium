@@ -74,7 +74,7 @@ public class BitFlagsTest {
 		/* Test unzulaessiger Indexeingaben
 		 * Eine Warnausgabe erscheint auf der Konsole.
 		 * Der Index wird auf noch zulaessigen Minmal- oder Maximal-Wert gesetzt.
-		 * (Die Methoden swap, switchOn und switchOff greifen fruehzeitig auf isSet zu
+		 * (Die Methoden swap, switchOn, isSet und switchOff greifen fruehzeitig auf indexChecker zu
 		 * liefern so ebenfalls diese Warnung, danach arbeiten die mit dem neuen Index.)
 		*/
 		assertTrue(eins.isSet(indexNotEnough) == eins.isSet(indexMin));
