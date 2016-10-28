@@ -7,7 +7,7 @@
 public class BinaryTest {
 
 	public static void main(String[] args) {
-		// Pruefung der Methode anhand der Integer-Grenzwerte 
+		// Pruefung der Methode anhand der Integer-Grenzwerte
 		int eingabe1 = -2147483648;
 		int eingabe2 = -1;
 		int eingabe3 = 0;
@@ -16,7 +16,7 @@ public class BinaryTest {
 
 		/* Die Ausgaben auf der Konsole geben die erwarteten korrekten Ergebnisse
 		* - Das Vorhandensein fuehrender Nullen ist ok und dient der Uebersichtlichkeit
-		* - Das Ausgeben des Ergebnisses der vordef. Java-Methode dient nur der Illustration 
+		* - Das Ausgeben des Ergebnisses der vordef. Java-Methode dient nur der Illustration
 		*/
 		System.out.println("Integer-Zahl:    " + eingabe1);
 		System.out.println("Eigen binaer:    " + Binary.inBinary(eingabe1));

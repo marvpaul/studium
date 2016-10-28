@@ -15,7 +15,7 @@ public class Binary {
 			a = a >> 1;					// "schiebt" Bitfolge nach rechts
 		}
 		// Ausgabe ist ein 32-Stellen langer String, ggf. mit fuehrenden Nullen
-		return binary; 
+		return binary;
 	}
 
 }

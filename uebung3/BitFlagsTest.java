@@ -1,6 +1,6 @@
 /**
 *
-* @author: 
+* @author:
 *
 */
 
@@ -25,7 +25,7 @@ public class BitFlagsTest {
 
 	@Before
 	public void testBitFlagsErzeugen(){
-		// Besondere Integer-Werte 
+		// Besondere Integer-Werte
 		eins = new BitFlags(-2147483648);
 		zwei = new BitFlags(-1);
 		drei = new BitFlags(0);
@@ -72,8 +72,8 @@ public class BitFlagsTest {
 	@Test
 	public void testIsSetFalseIndex() {
 		/* Test unzulaessiger Indexeingaben
-		 * Eine Warnausgabe erscheint auf der Konsole. 
-		 * Der Index wird auf noch zulaessigen Minmal- oder Maximal-Wert gesetzt. 
+		 * Eine Warnausgabe erscheint auf der Konsole.
+		 * Der Index wird auf noch zulaessigen Minmal- oder Maximal-Wert gesetzt.
 		 * (Die Methoden swap, switchOn und switchOff greifen fruehzeitig auf isSet zu
 		 * liefern so ebenfalls diese Warnung, danach arbeiten die mit dem neuen Index.)
 		*/
@@ -103,7 +103,7 @@ public class BitFlagsTest {
 		assertTrue(drei.isSet(indexNormal) == true);
 		vier.switchOn(indexNormal);
 		assertTrue(vier.isSet(indexNormal) == true);
-		fuenf.switchOn(indexNormal);		
+		fuenf.switchOn(indexNormal);
 		assertTrue(fuenf.isSet(indexNormal) == true);
 	}
 
@@ -130,7 +130,7 @@ public class BitFlagsTest {
 	assertTrue(vier.isSet(indexMax) == true);
 
 	fuenf.switchOn(indexMin);
-	fuenf.switchOn(indexMax);	
+	fuenf.switchOn(indexMax);
 	assertTrue(fuenf.isSet(indexMin) == true);
 	assertTrue(fuenf.isSet(indexMax) == true);
 	}
@@ -145,7 +145,7 @@ public class BitFlagsTest {
 		assertTrue(drei.isSet(indexNormal) == false);
 		vier.switchOff(indexNormal);
 		assertTrue(vier.isSet(indexNormal) == false);
-		fuenf.switchOff(indexNormal);		
+		fuenf.switchOff(indexNormal);
 		assertTrue(fuenf.isSet(indexNormal) == false);
 	}
 
@@ -172,7 +172,7 @@ public class BitFlagsTest {
 	assertTrue(vier.isSet(indexMax) == false);
 
 	fuenf.switchOff(indexMin);
-	fuenf.switchOff(indexMax);	
+	fuenf.switchOff(indexMax);
 	assertTrue(fuenf.isSet(indexMin) == false);
 	assertTrue(fuenf.isSet(indexMax) == false);
 	}
