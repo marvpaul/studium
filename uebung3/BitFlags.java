@@ -40,24 +40,18 @@ public class BitFlags {
 	public void switchOn(int index){
 		index = indexChecker(index);
 		if (isSet(index) == false){
-			//status += (int)Math.pow(2, index); //next 4 lines do nearly the same as Math.pow-line
-			int plus = 1;
-			for (int i = 0; i < index; i++){
-				plus *= 2;
-			}
-			status += plus; //add 1 or 2 or 4 or 8...2hoch32 depending on index
+			//status += (int)Math.pow(2, index);
+			//next line do same as Math.pow-line:
+			status += 1 << index;
 		}
 	}
 
 	public void switchOff(int index){
 		index = indexChecker(index);
 		if (isSet(index) == true){
-			//status -= (int)Math.pow(2, index); //next 4 lines do nearly the same as Math.pow-line
-			int minus = 1;
-			for (int i = 0; i < index; i++){
-				minus *= 2;
-			}
-			status -= minus; //minus 1 or 2 or 4 or 8...2hoch32 depending on index
+			//status -= (int)Math.pow(2, index);
+			//next line do same as Math.pow-line:
+			status -= 1 << index;
 		}
 	}
 
