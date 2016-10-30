@@ -26,9 +26,7 @@ public class Kreis extends Figur{
 	}
 
 	public String toString(){
-		String ausgabe = "";
-		ausgabe += "Die x-Koordinate des Mittelpunktes lautet: " + getAnker().getX() + "\n";
-		ausgabe += "Die y-Koordinate des Mittelpunktes lautet: " + getAnker().getY() + "\n";
+		String ausgabe = super.toString();
 		ausgabe += "Der Radius lautet: " + radius + "\n";
 		return ausgabe;
 	}

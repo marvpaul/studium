@@ -26,9 +26,7 @@ public class Quadrat extends Figur{
 	}
 
 	public String toString() {
-		String ausgabe = "";
-		ausgabe += "Die x-Koordinate des Ankerpunktes lautet: " + getAnker().getX() + "\n";
-		ausgabe += "Die y-Koordinate des Ankerpunktes lautet: " + getAnker().getY() + "\n";
+		String ausgabe = super.toString();
 		ausgabe += "Die Breite ist: " + breite + "\n";
 		return ausgabe;
 	}

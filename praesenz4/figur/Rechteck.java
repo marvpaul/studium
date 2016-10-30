@@ -21,16 +21,13 @@ public class Rechteck extends Quadrat{
 	}
 
 	public double berechneUmfang(){
-		double umfang = getBreite()*2 + laenge*2;
+		double umfang = super.berechneUmfang()/2 + laenge*2;
 		return umfang;
 	}
 
 	public String toString() {
-		String ausgabe = "";
-		ausgabe += "Die x-Koordinate des Ankerpunktes lautet: " + getAnker().getX() + "\n";
-		ausgabe += "Die y-Koordinate des Ankerpunktes lautet: " + getAnker().getY() + "\n";
+		String ausgabe = super.toString();
 		ausgabe += "Die Laenge ist: " + laenge + "\n";
-		ausgabe += "Die Breite ist: " + getBreite() + "\n";
 		return ausgabe;
 	}
 
