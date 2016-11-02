@@ -1,12 +1,17 @@
 
 public class Mitarbeiter {
-	private Gehalt gehalt;
+	private Gehalt gehalt = new Gehalt();
 	private String vorname;
 	private String nachname;
 
 	//Konstruktor(en)
 	public Mitarbeiter(Gehalt gehalt, String... namen){
 		this.gehalt = gehalt;
+		vorname = namen[0]; 				// der erste der Vornamen wird genommen
+		nachname = namen[namen.length - 1]; // und der letzte der Nachnamen
+	}
+
+	public Mitarbeiter(String... namen){
 		vorname = namen[0]; 				// der erste der Vornamen wird genommen
 		nachname = namen[namen.length - 1]; // und der letzte der Nachnamen
 	}
