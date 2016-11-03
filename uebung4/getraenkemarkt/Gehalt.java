@@ -18,7 +18,7 @@ public class Gehalt {
 	public void setBetrag(double betrag) {
 		if (betrag < 0.0){
 			System.out.println("Das Gehalt kann nicht im negativen Bereich liegen!");
-			System.out.println("Setze den Betrag auf Null...");
+			System.out.println("Addiere Null...");
 		}
 		else
 			this.betrag = betrag;
