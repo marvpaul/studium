@@ -6,13 +6,13 @@ public class Azubi extends Mitarbeiter{
 	//Konstruktor(en)
 	public Azubi(int ausbildungsJahr, String ausbildungsBeruf, Gehalt gehalt, String... namen){
 		super(gehalt, namen);
-		this.ausbildungsJahr = ausbildungsJahr;
+		setAusbildungsJahr(ausbildungsJahr);
 		this.ausbildungsBeruf = ausbildungsBeruf;
 	}
 
 	public Azubi(int ausbildungsJahr, Gehalt gehalt, String... namen){
 		super(gehalt, namen);
-		this.ausbildungsJahr = ausbildungsJahr;
+		setAusbildungsJahr(ausbildungsJahr);
 	}
 
 	public Azubi(String ausbildungsBeruf, Gehalt gehalt, String... namen){
@@ -22,6 +22,8 @@ public class Azubi extends Mitarbeiter{
 
 	public Azubi(int ausbildungsJahr, String ausbildungsBeruf, String... namen){
 		super(namen);
+		setAusbildungsJahr(ausbildungsJahr);
+		this.ausbildungsBeruf = ausbildungsBeruf;
 	}
 
 	public Azubi(Gehalt gehalt, String... namen){
@@ -30,10 +32,12 @@ public class Azubi extends Mitarbeiter{
 
 	public Azubi(int ausbildungsJahr, String... namen){
 		super(namen);
+		setAusbildungsJahr(ausbildungsJahr);
 	}
 
 	public Azubi(String ausbildungsBeruf, String... namen){
 		super(namen);
+		this.ausbildungsBeruf = ausbildungsBeruf;
 	}
 
 	public Azubi(String... namen){
