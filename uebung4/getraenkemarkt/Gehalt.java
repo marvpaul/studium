@@ -4,12 +4,7 @@ public class Gehalt {
 
 	//Konstruktor(en)
 	public Gehalt(double betrag){
-		if (betrag < 0.0){
-			System.out.println("Das Gehalt kann nicht im negativen Bereich liegen!");
-			System.out.println("Setze den Betrag auf Null...");
-		}
-		else
-			this.betrag = betrag;
+		setBetrag(betrag);
 	}
 
 	public Gehalt(){
