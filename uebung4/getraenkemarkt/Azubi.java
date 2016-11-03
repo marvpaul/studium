@@ -54,7 +54,12 @@ public class Azubi extends Mitarbeiter{
 	}
 
 	public void setAusbildungsJahr(int ausbildungsJahr) {
-		this.ausbildungsJahr = ausbildungsJahr;
+		if (ausbildungsJahr < 0){
+			System.out.println("Das Ausbildungsjahr kann nicht im negativen Bereich liegen!");
+			System.out.println("Addiere Null...");
+		}
+		else
+			this.ausbildungsJahr = ausbildungsJahr;
 	}
 
 	// toString()
