@@ -42,7 +42,7 @@ public class Rechner {
 		boolean testFehler = false;
 		@SuppressWarnings("unused") //testDouble soll nicht verwendet werden
 		double testDouble;
-		//Test, ob genau 3 Parameter eingegeben wurden: 
+		//Test, ob genau 3 Parameter eingegeben wurden:
 		if (zuPruefen.length != 3){
 			System.out.println("Falsche ANZAHL an Parametern.");
 			return testFehler = true;
@@ -58,14 +58,13 @@ public class Rechner {
 		}
 		return testFehler;
 	}
-	
-	
+
 	//Addieren-Methode
 	private static double add(double a, double b){
 		double erg = a + b;
 		return erg;
 	}
-	
+
 	//Subtrahieren-Methode
 	private static double sub(double a, double b){
 		double erg = a - b;

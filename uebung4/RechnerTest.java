@@ -24,12 +24,12 @@ public class RechnerTest {
             new String[]{"-5", "mul", "-6"},
             new String[]{"-6", "div", "-7"},
             };
- 
+
         for (int i = 0; i < testNegativ.length; i++) {
             Rechner.main(testNegativ[i]);
         }
 
-        //Fehlerfaelle (falsche Eingaben)    
+        //Fehlerfaelle (falsche Eingaben)
         System.out.println("\n\nTest Fehlerfaelle (falsche Eingaben):");
         System.out.println();
 
