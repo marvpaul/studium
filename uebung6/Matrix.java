@@ -31,10 +31,9 @@ public class Matrix {
 				}
 			}
 		}
-		else{
+		else {
 			System.out.println("Eingabe ergibt keinen Sinn. Default-Matrix erstellt.");
 		}
-		
 	}
 
 	public Matrix () {
@@ -91,7 +90,7 @@ public class Matrix {
 				}
 			}
 		}
-		else{
+		else {
 			System.out.println("Kann nicht multiplizieren. Default-Matrix ausgegeben.");
 		}
 		return ergebnis;
@@ -105,7 +104,7 @@ public class Matrix {
 			}
 		}
 	}
-	
+
 	public String toString() {
 		String ausgabe = "";
 		for (int i = 0; i < zeilen; i++) {
@@ -116,7 +115,7 @@ public class Matrix {
 		}
 		ausgabe += "\n\nAnzahl der Zeilen: " + zeilen;
 		ausgabe += "\nAnzahl der Spalten: " + spalten;
-		return ausgabe;	
+		return ausgabe;
 	}
 
 }

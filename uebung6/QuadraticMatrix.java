@@ -24,7 +24,7 @@ public class QuadraticMatrix extends Matrix {
 				}
 			}
 			else {
-				ergebnis = new IdentityMatrix(komponenten.length); 
+				ergebnis = new IdentityMatrix(komponenten.length);
 			}
 			return ergebnis;
 		}

@@ -17,7 +17,7 @@ public class Vektor extends Matrix {
 	}
 
 	public String toString() {
-		return "\nVEKTOR:" + super.toString() + "\nDer Betrag des Vektors lautet: " 
+		return "\nVEKTOR:" + super.toString() + "\nDer Betrag des Vektors lautet: "
 				+ this.length();
 	}
 
