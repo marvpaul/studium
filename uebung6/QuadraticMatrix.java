@@ -1,10 +1,13 @@
 
 public class QuadraticMatrix extends Matrix {
 
+	// Konstruktoren
 	public QuadraticMatrix(float[][] k) {
-		super(k.length, k[0].length, k);
-		if (k.length != k[0].length)
-			System.out.println("\nWARNUNG! Sie erstellten KEINE quadratische Matrix...");
+		super(checkQuadraticMatrix(k));
+		if (checkQuadraticMatrix(k) > 0) 
+			komponenten = k;
+		else
+			System.out.println("WARNUNG! Sie gaben KEINE quadratische Matrix ein...");
 	}
 
 	public QuadraticMatrix(int m) {
@@ -15,16 +18,26 @@ public class QuadraticMatrix extends Matrix {
 		super();
 	}
 
-	public Matrix pow(int n) {
+	// Check-Methode
+	private static int checkQuadraticMatrix(float[][] k) {
+		if (k.length != k[0].length)
+			return -1;
+		else
+			return k.length;
+	}
+
+	// Potenzmethode fuer quadratische Matrizen
+	public Matrix pow(int n){
 		Matrix ergebnis = this;
+		// Pruefung wegen moeglicher nachtraeglicher Veraenderungen:
 		if ((komponenten.length == komponenten[0].length) && (n >= 0)) {
 			if (n > 0) {
-				for (int i = 1; i < n; i++) {
+				for (int i = 1; i < n; i++) { // n-mal Multiplikation mit sich selbst
 					ergebnis = Matrix.multiply(ergebnis, this);
 				}
 			}
-			else {
-				ergebnis = new IdentityMatrix(komponenten.length);
+			else { // Potenz == 0 ergibt die Einheitsmatrix (in richtigen Massen)
+				ergebnis = new IdentityMatrix(komponenten.length); 
 			}
 			return ergebnis;
 		}
@@ -36,6 +49,8 @@ public class QuadraticMatrix extends Matrix {
 	}
 
 	public String toString() {
+		// toString() erkennt nachtraegliche Veraenderungen der komponenten
+		// und gibt nur nach Pruefung den Hinweis "QUADRATISCHE MATRIX" aus
 		String ausgabe = "";
 		if (komponenten.length == komponenten[0].length)
 			ausgabe += "\nQUADRATISCHE MATRIX:";

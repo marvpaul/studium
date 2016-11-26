@@ -10,7 +10,7 @@ public class Matrix {
 		if ((m == k.length) && (n == k[0].length)) {
 			dimensionenCheck = true;
 		}
-		if ((n > 0) && (m > 0) && dimensionenCheck == true) {
+		if ((n > 0) && (m > 0) && dimensionenCheck == true){
 			zeilen = m;
 			spalten = n;
 			komponenten = k;
@@ -24,6 +24,22 @@ public class Matrix {
 		if ((n > 0) && (m > 0)) {
 			zeilen = m;
 			spalten = n;
+			komponenten = new float[zeilen][spalten];
+			for (int i = 0; i < zeilen; i++) {
+				for (int j = 0; j < spalten; j++) {
+					komponenten[i][j] = 0;
+				}
+			}
+		}
+		else {
+			System.out.println("Eingabe ergibt keinen Sinn. Default-Matrix erstellt.");
+		}
+	}
+
+	public Matrix (int m) {
+		if (m > 0) {
+			zeilen = m;
+			spalten = m;
 			komponenten = new float[zeilen][spalten];
 			for (int i = 0; i < zeilen; i++){
 				for (int j = 0; j < spalten; j++){
@@ -39,11 +55,11 @@ public class Matrix {
 	public Matrix () {
 		// default-Matrix bei leerer Eingabe: 1 Zeile, 1 Spalte, Inhalt: 0
 	}
-
+	
 	public int getZeilen() {
 		return zeilen;
 	}
-
+	
 	// Klassenmethode prüft, ob 2 Matrizen identisch sind
 	public static boolean equals(Matrix eins, Matrix zwei) {
 		boolean identisch = false;
@@ -71,7 +87,7 @@ public class Matrix {
 				}
 			}
 		}
-		else{
+		else {
 			System.out.println("Kann nicht addieren. Default-Matrix ausgegeben.");
 		}
 		return ergebnis;
@@ -80,7 +96,7 @@ public class Matrix {
 	// Klassenmethode multipliziert 2 Matrizen
 	public static Matrix multiply(Matrix eins, Matrix zwei) {
 		Matrix ergebnis = new Matrix();
-		if ((eins.spalten == zwei.zeilen)){
+		if ((eins.spalten == zwei.zeilen)) {
 			ergebnis = new Matrix(eins.zeilen, zwei.spalten);
 			for (int i = 0; i < ergebnis.zeilen; i++) {
 				for (int j = 0; j < ergebnis.spalten; j++) {
@@ -97,9 +113,9 @@ public class Matrix {
 	}
 
 	// Instanzmethode multipliziert Matrix mit einem Skalar
-	public void multiplyScalar(float skalar){
+	public void multiplyScalar(float skalar) {
 		for (int i = 0; i < zeilen; i++){
-			for (int j = 0; j < spalten; j++){
+			for (int j = 0; j < spalten; j++) {
 				komponenten[i][j] *= skalar;
 			}
 		}
@@ -115,7 +131,7 @@ public class Matrix {
 		}
 		ausgabe += "\n\nAnzahl der Zeilen: " + zeilen;
 		ausgabe += "\nAnzahl der Spalten: " + spalten;
-		return ausgabe;
+		return ausgabe;	
 	}
 
 }
