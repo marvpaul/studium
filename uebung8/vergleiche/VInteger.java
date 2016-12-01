@@ -11,11 +11,10 @@ public class VInteger extends Integer implements Vergleichbar {
 
 	@Override
 	public int vergleicheMit(Vergleichbar obj) {
-		VInteger VIn1 = (VInteger)this;
-		VInteger VIn2 = (VInteger)obj; // Voraussetzung: obj ist auch ein VInteger!
-		if (VIn1.getWert() == VIn2.getWert())
+		VInteger vergleichVIn = (VInteger)obj; // Voraussetzung: obj ist auch ein VInteger!
+		if (this.getWert() == vergleichVIn.getWert())
 			return 0;
-		else if (VIn1.getWert() < VIn2.getWert())
+		else if (this.getWert() < vergleichVIn.getWert())
 			return -1;
 		else
 			return 1;
