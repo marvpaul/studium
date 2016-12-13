@@ -6,19 +6,14 @@
 
 public class KeineBerechtigungException extends Exception {
 
-	private static final long serialVersionUID = 2L;
-	private String message;
+	private static final long serialVersionUID = 1L;
 
 	public KeineBerechtigungException() {
-		super();
+		super("Keine Berechtigung!");
 	}
 
 	public KeineBerechtigungException(String message) {
-		super();
-		this.message = message;
+		super(message);
 	}
 
-	public String getMessage() {
-		return message;
-	}
 }
