@@ -1,5 +1,5 @@
-# Please don't just copy that!
-# Seems to work for me...
+# Please don't just copy that! (But have a look at example of Tutor)
+# Seems to work for me, but not necessarily for you...
 
 JC = javac
 JCFLAGS = -g
@@ -13,11 +13,12 @@ JDOCDIR = java-doc
 
 # Make JUnit4-Tests work...
 # these jar's have to be in same directory as makefile
-# found them in: /usr/share/java/ (Ubuntu)
+# I found them in: /usr/share/java/ (Ubuntu)
 JUNIT = ./junit4-4.11.jar
 HAM = ./hamcrest-core-1.3.jar
 
-# ./src/main/TestLinkedLists.java is my JUnit-class (yours may be different)
+# TestLinkedLists.java is my only JUnit-Test-class (your entry/ entries may be different)
+TESTSOURCE = ./src/main/TestLinkedLists.java
 TESTCLASS = main.TestLinkedLists
 
 # Prog1Tools-folder (not .zip!) has to be in same directory as makefile
@@ -48,20 +49,21 @@ SOURCES = ./src/main/Main.java \
 	  ./src/sort/StudyPathComparator.java \
 	  ./src/sort/SurnameComparator.java \
 
-# Add line 4 to compile JUnit-Sourcefile as well (filename may be different!)
+
+# Added line 4 of default to compile JUnit-Sourcefile as well (see above)
 # (Remove last line of default if you don't use IOTools)
 default:
 	echo 'Run target default'
 	mkdir -p $(JBINDIR)
 	$(JC) $(JCFLAGS) $(SOURCES) -d $(JBINDIR)
-	$(JC) $(JAVAFLAGS) $(JUNIT):$(JBINDIR) ./src/main/TestLinkedLists.java -d $(JBINDIR)
-	cp -r $(IOTOOLS) $(JBINDIR)
+	$(JC) $(JAVAFLAGS) $(JUNIT):$(JBINDIR) $(TESTSOURCE) -d $(JBINDIR)
+	-cp -r $(IOTOOLS) $(JBINDIR)
 
 run-app:
-	@echo 'Run target run'
+	@echo 'Run target run-app'
 	cd $(JBINDIR); $(JAVA) $(JAVAFLAGS) . $(MAINCLASS)
 
-# JUnit test should work if you adjusted entries above
+# This JUnit test should work now if you adjusted entries above:
 run-test:
 	@echo 'Run target run-test'
 	cd $(JBINDIR); $(JAVA) $(JAVAFLAGS) .:.$(JUNIT):.$(HAM) org.junit.runner.JUnitCore $(TESTCLASS)
