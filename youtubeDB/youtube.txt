@@ -1,0 +1,133 @@
+DROP TABLE watches;
+DROP TABLE categorizes;
+DROP TABLE tags;
+DROP TABLE Rating;
+DROP TABLE Category;
+DROP TABLE Tag;
+DROP TABLE Comment;
+DROP TABLE Watcher;
+DROP TABLE Video;
+DROP TABLE Star;
+
+
+CREATE TABLE Star
+       (ID             INTEGER PRIMARY KEY,
+        Name           VARCHAR(30) NOT NULL,
+        Profile        VARCHAR(130) NOT NULL,
+        Image          VARCHAR(30) NOT NULL);
+
+CREATE TABLE Video
+       (ID             INTEGER PRIMARY KEY,
+        Name           VARCHAR(130) NOT NULL,
+        Duration       VARCHAR(30) NOT NULL,
+        Description    VARCHAR(130) NOT NULL,
+        ViewCount      INTEGER,
+        URL            VARCHAR(100) NOT NULL,
+        IDStar         INTEGER,
+        FOREIGN KEY    (IDStar) REFERENCES Star(ID) ON DELETE SET NULL);
+
+CREATE TABLE Watcher
+       (ID             INTEGER PRIMARY KEY,
+        Name           VARCHAR(30) NOT NULL);
+
+CREATE TABLE Comment
+       (ID             INTEGER PRIMARY KEY,
+        Content        VARCHAR(130) NOT NULL,
+        IDVideo        INTEGER,
+        IDWatcher      INTEGER,
+        FOREIGN KEY    (IDVideo) REFERENCES Video(ID) ON DELETE CASCADE,
+        FOREIGN KEY    (IDWatcher) REFERENCES Watcher(ID) ON DELETE SET NULL);
+
+CREATE TABLE Tag
+       (ID             INTEGER PRIMARY KEY,
+        Name           VARCHAR(30) NOT NULL);
+
+CREATE TABLE Category
+       (ID             INTEGER PRIMARY KEY,
+        Name           VARCHAR(30) NOT NULL,
+        PreviewImage   VARCHAR(30) NOT NULL);
+
+CREATE TABLE Rating
+       (IDStar         INTEGER PRIMARY KEY,
+        StarCount1     INTEGER,
+        StarCount2     INTEGER,
+        StarCount3     INTEGER,
+        StarCount4     INTEGER,
+        StarCount5     INTEGER,
+        IDWatcher      INTEGER,
+        FOREIGN KEY    (IDStar) REFERENCES Star(ID) ON DELETE CASCADE,
+        FOREIGN KEY    (IDWatcher) REFERENCES Watcher(ID) ON DELETE SET NULL);
+
+CREATE TABLE tags
+       (IDTag          INTEGER REFERENCES Tag(ID),
+        IDVideo        INTEGER REFERENCES Video(ID),
+        PRIMARY KEY    (IDTag, IDVideo));
+
+CREATE TABLE categorizes
+       (IDCategory     INTEGER REFERENCES Category(ID),
+        IDVideo        INTEGER REFERENCES Video(ID),
+        PRIMARY KEY    (IDCategory, IDVideo));
+
+CREATE TABLE watches
+       (IDWatcher      INTEGER REFERENCES Watcher(ID),
+        IDVideo        INTEGER REFERENCES Video(ID),
+        PRIMARY KEY    (IDWatcher, IDVideo));
+
+
+START TRANSACTION;
+
+DELETE FROM watches;
+DELETE FROM categorizes;
+DELETE FROM tags;
+DELETE FROM Rating;
+DELETE FROM Category;
+DELETE FROM Tag;
+DELETE FROM Comment;
+DELETE FROM Watcher;
+DELETE FROM Video;
+DELETE FROM Star;
+
+
+INSERT INTO Star(ID, Name, Profile, Image) 
+VALUES (1, 'Konstatin Hert', 'Trifft sich mit Profi-Fußballern und spielt Fussball.', 'Bild01.jpg'); 
+
+
+INSERT INTO Video(ID, Name, Duration, Description, ViewCount, URL, IDStar) 
+VALUES (2001, 'ULTIMATIVE FREISTOß CHALLENGE mit LEWANDOWSKI', '4:42', 
+        'freekickerz vs Robert Lewandowski.'
+        , 11285427, 'https://www.youtube.com/watch?v=Jwenm-X4J00', 1);
+
+
+INSERT INTO Watcher(ID, Name) 
+VALUES (1001, 'Uli');
+
+
+INSERT INTO Comment(ID, Content, IDVideo, IDWatcher) 
+VALUES (4001, 'Freundlicher Typ dieser Lewandowski.', 2001, 1001);
+
+
+INSERT INTO Tag(ID, Name) 
+VALUES (20, 'Fussball');
+
+
+INSERT INTO Category(ID, Name, PreviewImage) 
+VALUES (667, 'Sport', 'BildA.jpg');
+
+
+INSERT INTO Rating(IDStar, StarCount1, StarCount2, StarCount3, StarCount4, StarCount5, IDWatcher) 
+VALUES (1, 0, 0, 0, 0, 1, 1001);
+
+
+INSERT INTO tags(IDTag, IDVideo) 
+VALUES (20, 2001);
+
+
+INSERT INTO categorizes(IDCategory, IDVideo) 
+VALUES (667, 2001);
+
+
+INSERT INTO watches(IDWatcher, IDVideo) 
+VALUES (1001, 2001);
+
+
+commit;
