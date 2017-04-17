@@ -59,18 +59,18 @@ CREATE TABLE Rating
         FOREIGN KEY    (IDWatcher) REFERENCES Watcher(ID) ON DELETE SET NULL);
 
 CREATE TABLE tags
-       (IDTag          INTEGER REFERENCES Tag(ID),
-        IDVideo        INTEGER REFERENCES Video(ID),
+       (IDTag          INTEGER REFERENCES Tag(ID) ON DELETE CASCADE,
+        IDVideo        INTEGER REFERENCES Video(ID) ON DELETE CASCADE,
         PRIMARY KEY    (IDTag, IDVideo));
 
 CREATE TABLE categorizes
-       (IDCategory     INTEGER REFERENCES Category(ID),
-        IDVideo        INTEGER REFERENCES Video(ID),
+       (IDCategory     INTEGER REFERENCES Category(ID) ON DELETE CASCADE,
+        IDVideo        INTEGER REFERENCES Video(ID) ON DELETE CASCADE,
         PRIMARY KEY    (IDCategory, IDVideo));
 
 CREATE TABLE watches
-       (IDWatcher      INTEGER REFERENCES Watcher(ID),
-        IDVideo        INTEGER REFERENCES Video(ID),
+       (IDWatcher      INTEGER REFERENCES Watcher(ID) ON DELETE CASCADE,
+        IDVideo        INTEGER REFERENCES Video(ID) ON DELETE CASCADE,
         PRIMARY KEY    (IDWatcher, IDVideo));
 
 
