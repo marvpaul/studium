@@ -1,0 +1,15 @@
+a —> Alle User die kein Kommentar geschrieben haben
+SELECT name FROM ((SELECT * FROM user) - (SELECT * FROM comment, user WHERE user.id = comment.IDuser))
+
+b —> Alle Videos die Tag „hallo“ haben 
+SELECT v.name FROM video v, tags t, tag t2 WHERE v.id = t.IDv AND t.idtag = t2.id AND t2.name = ‚hallo‘
+
+Alle Videos die min. 1x 5 Sterne bekommen haben 
+SELECT v.name FROM video v, rating r WHERE v.id = r.IDv AND r.5star >= 1
+
+c) 
+Wähle alle Videos aus die kein Rating haben
+SELECT v.name FROM video v WHERE v.id not in ( SELECT r.IDv from ratings); 
+
+Wähle alle Videos ohne Tag Fußball
+SELECT v.name FROM video v WHERE v.id not in (SELECT t.IDv FROM tag t WHERE t.name = ‚Fußball‘)); 
