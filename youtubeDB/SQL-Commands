@@ -1,15 +1,44 @@
+DB: 
 a —> Alle User die kein Kommentar geschrieben haben
-SELECT name FROM ((SELECT * FROM user) - (SELECT * FROM comment, user WHERE user.id = comment.IDuser))
+SELECT name FROM ((SELECT * FROM watcher) EXCEPT (SELECT watcher.id, name FROM watcher, comment WHERE watcher.id = comment.idwatcher)) AS tmp;
 
-b —> Alle Videos die Tag „hallo“ haben 
-SELECT v.name FROM video v, tags t, tag t2 WHERE v.id = t.IDv AND t.idtag = t2.id AND t2.name = ‚hallo‘
+b —> Alle Videos die Tag „Fussball“ haben 
+SELECT v.name FROM video v, tags t, tag t2
+WHERE v.id = t.idvideo AND t.idtag = t2.id AND t2.name = 'Fussball';
 
-Alle Videos die min. 1x 5 Sterne bekommen haben 
-SELECT v.name FROM video v, rating r WHERE v.id = r.IDv AND r.5star >= 1
+
+Alle Stars die min. 1x 5 Sterne bekommen haben 
+SELECT s.name FROM star s, rating r WHERE s.id = r.idstar AND r.starcount5 >= 1;
+
 
 c) 
-Wähle alle Videos aus die kein Rating haben
-SELECT v.name FROM video v WHERE v.id not in ( SELECT r.IDv from ratings); 
+Wähle alle Stars die kein Rating haben 
+SELECT s.name FROM star s WHERE s.id not in ( SELECT r.idstar FROM rating r);
+
 
 Wähle alle Videos ohne Tag Fußball
-SELECT v.name FROM video v WHERE v.id not in (SELECT t.IDv FROM tag t WHERE t.name = ‚Fußball‘)); 
+SELECT v.name FROM video v WHERE v.id not in (SELECT t.idvideo FROM tags t, tag t2 WHERE t2.name = 'Fussball' AND t.idtag = t2.id);
+
+d) 
+Wie viele Videos haben die User geschaut? 
+SELECT w.name, count(*) FROM watcher w, watches w2 WHERE w2.idwatcher = w.id GROUP BY w.name, w.id;
+
+Wie viele Ratings haben die User schon abgegeben? 
+SELECT w.name, count(*) FROM watcher w, rating r WHERE r.idwatcher = w.id GROUP BY w.name, w.id;
+
+
+Wie viele Leute haben ein Video geschaut? 
+SELECT v.name, count(*) FROM video v, watcher w, watches w2 WHERE w2.idwatcher = w.id AND w2.idvideo = v.id GROUP BY v.name;
+
+Welcher Tag kommt in wie vielen Videos vor? 
+SELECT t.name, count(*) FROM tag t, tags t2 WHERE t.id = t2.idtag GROUP BY t.id;
+
+e)
+Welche Videos haben 2 oder mehr Views? 
+SELECT v.name, count(*) FROM video v, watches w WHERE v.id = w.idvideo GROUP BY v.id HAVING count(*) >= 2;
+
+Welcher User hat schon mindestens 2 Kommentare gemacht? 
+SELECT w.name, count(*) FROM watcher w, comment c WHERE w.id = c.idwatcher GROUP BY w.id HAVING count(*) >= 2;
+
+
+
